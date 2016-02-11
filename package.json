@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/oviava/react-backend.git"
+    "url": "https://github.com/oviava/relay-backend.git"
   },
   "keywords": [
     "GraphQL",
@@ -18,9 +18,9 @@
   "author": "Ovidiu Avasilcai ( ovidiu.ava@gmail.com )",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/oviava/react-backend/issues"
+    "url": "https://github.com/oviava/relay-backend/issues"
   },
-  "homepage": "https://github.com/oviava/react-backend#readme",
+  "homepage": "https://github.com/oviava/relay-backend#readme",
   "dependencies": {
     "@risingstack/graffiti": "^3.0.2",
     "graphql": "^0.4.17",
