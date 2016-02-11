@@ -15,7 +15,7 @@
     "HAPI",
     "Sequelize"
   ],
-  "author": "Ovidiu Avasilcai ( ovidiu.ava@gmail.com )",
+  "author": "Ovidiu Avasilcai ( ovidiu.ava at gmail.com )",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/oviava/relay-backend/issues"
