@@ -6,9 +6,11 @@ import { relay } from 'graphql-sequelize';
 
 const { sequelizeNodeInterface } = relay;
 
+
+// change these details to match your db config
 const sequelize = new Sequelize('graphql', 'sfuser', 'sfpass', {
   host: 'localhost',
-  dialect: 'mariadb',
+  dialect: 'mysql',
   logging: console.log, // eslint-disable-line
 });
 
