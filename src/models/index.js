@@ -34,10 +34,13 @@ const {
   nodeInterface,
 } = sequelizeNodeInterface(sequelize);
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-db.nodeField = nodeField;
-db.nodeTypeMapper = nodeTypeMapper;
-db.nodeInterface = nodeInterface;
+db = {
+  ...db,
+  sequelize,
+  Sequelize,
+  nodeField,
+  nodeTypeMapper,
+  nodeInterface,
+};
 
 module.exports = db;

@@ -17,7 +17,7 @@ const presentationType = new GraphQLObjectType({
   description: 'A Presentation',
   fields: () => ({
     ...attributeFields(Presentation, {
-      exclude: ['speakerId'],
+      exclude: ['speakerId'], // we remove the default foreignKey and use 'speaker'
     }),
     speaker: {
       type: speakerType,
