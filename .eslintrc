@@ -1,0 +1,12 @@
+{
+  "extends": "eslint-config-airbnb/base",
+  "ecmaFeatures": {
+    "modules": true,
+    "destructuring": true,
+    "spread": true,
+    "experimentalObjectRestSpread": true,
+  },
+  "env": {
+    "node": true
+  }
+}
