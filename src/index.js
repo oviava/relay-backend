@@ -7,7 +7,9 @@ const server = new Hapi.Server();
 
 server.connection({
   port: 3000,
-
+  routes: {
+    cors: true,
+  },
 });
 
 sequelize.sync().then(() => {
