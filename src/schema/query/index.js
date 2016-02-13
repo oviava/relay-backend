@@ -33,7 +33,7 @@ const query = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLInt),
         },
       },
-      resolve: resolver(Speaker, { filterAttributes: false }),
+      resolve: resolver(Speaker),
     },
     speakers: {
       type: new GraphQLList(speakerType),

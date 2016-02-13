@@ -27,6 +27,7 @@
     "graphql-relay": "^0.3.6",
     "graphql-sequelize": "^0.20.0",
     "hapi": "^13.0.0",
+    "lodash": "^4.3.0",
     "mysql": "^2.10.2",
     "sequelize": "^3.19.2"
   },

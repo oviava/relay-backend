@@ -8,8 +8,6 @@ module.exports = (sequelize, DataTypes) => {
         Schedule.Presentations = Schedule.hasMany(models.Presentation, {
           as: 'presentations',
           foreignKey: 'scheduleId',
-          onDelete: 'CASCADE',
-          hooks: true,
         });
       },
     },

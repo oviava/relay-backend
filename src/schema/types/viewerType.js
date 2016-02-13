@@ -3,6 +3,9 @@ import {
   GraphQLInt,
 } from 'graphql';
 
+// TEMP FIX for DUBLICATE COLUMN ISUE
+
+const _ = require('lodash');
 
 import presentationType from '../types/presentationType';
 import speakerType from '../types/speakerType';
@@ -18,6 +21,10 @@ const viewerPresentationsConnection = sequelizeConnection({
   name: 'viewerPresentations',
   target: Presentation,
   nodeType: presentationType,
+  before: (options) => {
+    options.attributes = _.uniq(options.attributes);
+    return options;
+  },
   connectionFields: {
     total: {
       type: GraphQLInt,
@@ -30,6 +37,10 @@ const viewerSpeakersConnection = sequelizeConnection({
   name: 'viewerSpeakers',
   target: Speaker,
   nodeType: speakerType,
+  before: (options) => {
+    options.attributes = _.uniq(options.attributes);
+    return options;
+  },
   connectionFields: {
     total: {
       type: GraphQLInt,
@@ -42,6 +53,10 @@ const viewerRoomsConnection = sequelizeConnection({
   name: 'viewerRooms',
   target: Room,
   nodeType: roomType,
+  before: (options) => {
+    options.attributes = _.uniq(options.attributes);
+    return options;
+  },
   connectionFields: {
     total: {
       type: GraphQLInt,
@@ -54,6 +69,10 @@ const viewerSchedulesConnection = sequelizeConnection({
   name: 'viewerSchedules',
   target: Schedule,
   nodeType: scheduleType,
+  before: (options) => {
+    options.attributes = _.uniq(options.attributes);
+    return options;
+  },
   connectionFields: {
     total: {
       type: GraphQLInt,
@@ -83,7 +102,7 @@ const viewerType = new GraphQLObjectType({
     schedules: {
       type: viewerSchedulesConnection.connectionType,
       args: viewerSchedulesConnection.connectionArgs,
-      resolve: viewerRoomsConnection.resolve,
+      resolve: viewerSchedulesConnection.resolve,
     },
   }),
 });
