@@ -69,6 +69,50 @@ const query = new GraphQLObjectType({
       },
       resolve: resolver(Presentation),
     },
+    room: {
+      type: roomType,
+      args: {
+        id: {
+          description: 'id of room',
+          type: new GraphQLNonNull(GraphQLInt),
+        },
+      },
+      resolve: resolver(Room),
+    },
+    rooms: {
+      type: new GraphQLList(roomType),
+      args: {
+        limit: {
+          type: GraphQLInt,
+        },
+        order: {
+          type: GraphQLString,
+        },
+      },
+      resolver: resolver(Room),
+    },
+    schedule: {
+      type: scheduleType,
+      args: {
+        id: {
+          description: 'id of schedule',
+          type: new GraphQLNonNull(GraphQLInt),
+        },
+      },
+      resolve: resolver(Schedule),
+    },
+    schedules: {
+      type: new GraphQLList(scheduleType),
+      args: {
+        limit: {
+          type: GraphQLInt,
+        },
+        order: {
+          type: GraphQLString,
+        },
+      },
+      resolve: resolver(Schedule),
+    },
     viewer: {
       type: viewerType,
       // resolve: (source, args, info) => {
