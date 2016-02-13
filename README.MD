@@ -12,6 +12,6 @@ Run `npm install`
 
 Run with `node index.js`
 
-Browse to `http://localhost:3000/graphql` for gui interface.
+Browse to `http://localhost:3001/graphql` for gui interface.
 
 p.s. requires node v5
