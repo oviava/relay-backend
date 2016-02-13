@@ -9,22 +9,21 @@ import {
   globalIdField,
 } from 'graphql-relay';
 
-import { Speaker, nodeInterface } from '../../models';
+import { Schedule, nodeInterface } from '../../models';
 import presentationType from './presentationType';
 
-
-const speakerType = new GraphQLObjectType({
-  name: Speaker.name,
-  description: 'A Speaker',
+const scheduleType = new GraphQLObjectType({
+  name: Schedule.name,
+  description: 'A Schedule',
   fields: () => ({
-    ...attributeFields(Speaker),
+    ...attributeFields(Schedule),
     presentations: {
       type: new GraphQLList(presentationType),
-      resolve: resolver(Speaker.Presentations),
+      resolve: resolver(Schedule.Presentations),
     },
-    id: globalIdField(Speaker.name),
+    id: globalIdField(Schedule.name),
   }),
   interfaces: [nodeInterface],
 });
 
-export default speakerType;
+export default scheduleType;

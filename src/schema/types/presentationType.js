@@ -10,6 +10,8 @@ import {
 
 import { Presentation, nodeInterface } from '../../models';
 import speakerType from './speakerType';
+import roomType from './roomType';
+import scheduleType from './scheduleType';
 
 
 const presentationType = new GraphQLObjectType({
@@ -17,11 +19,20 @@ const presentationType = new GraphQLObjectType({
   description: 'A Presentation',
   fields: () => ({
     ...attributeFields(Presentation, {
-      exclude: ['speakerId'], // we remove the default foreignKey and use 'speaker'
+      // we remove the default foreignKey and use 'speaker'
+      exclude: ['speakerId', 'roomId', 'scheduleId'],
     }),
     speaker: {
       type: speakerType,
       resolve: resolver(Presentation.Speaker),
+    },
+    room: {
+      type: roomType,
+      resolve: resolver(Presentation.Room),
+    },
+    schedule: {
+      type: scheduleType,
+      resolve: resolver(Presentation.Schedule),
     },
     id: globalIdField(Presentation.name),
   }),

@@ -11,6 +11,18 @@ module.exports = (sequelize, DataTypes) => {
           onDelete: 'CASCADE',
           hooks: true,
         });
+        Presentation.Schedule = Presentation.belongsTo(models.Schedule, {
+          as: 'schedule',
+          foreignKey: 'scheduleId',
+          onDelete: 'CASCADE',
+          hooks: true,
+        });
+        Presentation.Room = Presentation.belongsTo(models.Room, {
+          as: 'room',
+          foreignKey: 'roomId',
+          onDelete: 'CASCADE',
+          hooks: true,
+        });
       },
     },
     timestamps: false,

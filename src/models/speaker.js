@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
           as: 'presentations',
           foreignKey: 'speakerId',
           onDelete: 'CASCADE',
-          hooks: 'true',
+          hooks: true,
         });
       },
     },
