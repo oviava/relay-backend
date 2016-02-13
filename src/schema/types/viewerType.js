@@ -6,7 +6,9 @@ import {
 
 import presentationType from '../types/presentationType';
 import speakerType from '../types/speakerType';
-import { Presentation, Speaker } from '../../models';
+import roomType from '../types/roomType';
+import scheduleType from '../types/scheduleType';
+import { Presentation, Speaker, Room, Schedule } from '../../models';
 
 import { relay } from 'graphql-sequelize';
 
@@ -36,6 +38,30 @@ const viewerSpeakersConnection = sequelizeConnection({
   },
 });
 
+const viewerRoomsConnection = sequelizeConnection({
+  name: 'viewerRooms',
+  target: Room,
+  nodeType: roomType,
+  connectionFields: {
+    total: {
+      type: GraphQLInt,
+      resolve: () => Room.count(),
+    },
+  },
+});
+
+const viewerSchedulesConnection = sequelizeConnection({
+  name: 'viewerSchedules',
+  target: Schedule,
+  nodeType: scheduleType,
+  connectionFields: {
+    total: {
+      type: GraphQLInt,
+      resolve: () => Schedule.count(),
+    },
+  },
+});
+
 const viewerType = new GraphQLObjectType({
   name: 'Viewer',
   fields: () => ({
@@ -48,6 +74,16 @@ const viewerType = new GraphQLObjectType({
       type: viewerSpeakersConnection.connectionType,
       args: viewerSpeakersConnection.connectionArgs,
       resolve: viewerSpeakersConnection.resolve,
+    },
+    rooms: {
+      type: viewerRoomsConnection.connectionType,
+      args: viewerRoomsConnection.connectionArgs,
+      resolve: viewerRoomsConnection.resolve,
+    },
+    schedules: {
+      type: viewerSchedulesConnection.connectionType,
+      args: viewerSchedulesConnection.connectionArgs,
+      resolve: viewerRoomsConnection.resolve,
     },
   }),
 });

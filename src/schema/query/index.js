@@ -7,15 +7,19 @@ import {
 } from 'graphql';
 
 import { resolver } from 'graphql-sequelize';
-import { Speaker, Presentation, nodeTypeMapper, nodeField } from '../../models';
+import { Room, Schedule, Speaker, Presentation, nodeTypeMapper, nodeField } from '../../models';
 
 import speakerType from '../types/speakerType';
 import presentationType from '../types/presentationType';
+import scheduleType from '../types/scheduleType';
+import roomType from '../types/roomType';
 import viewerType from '../types/viewerType';
 
 nodeTypeMapper.mapTypes({
   [Speaker.name]: speakerType,
   [Presentation.name]: presentationType,
+  [Room.name]: roomType,
+  [Schedule.name]: scheduleType,
 });
 
 const query = new GraphQLObjectType({
