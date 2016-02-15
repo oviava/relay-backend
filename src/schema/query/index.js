@@ -89,7 +89,7 @@ const query = new GraphQLObjectType({
           type: GraphQLString,
         },
       },
-      resolver: resolver(Room),
+      resolve: resolver(Room),
     },
     schedule: {
       type: scheduleType,
