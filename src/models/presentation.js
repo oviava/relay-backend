@@ -1,7 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
   const Presentation = sequelize.define('Presentation', {
     title: { type: DataTypes.STRING(128), allowNull: false }, // eslint-disable-line
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
+    language: { type: DataTypes.STRING(64)} // eslint-disable-line
   }, {
     classMethods: {
       associate: (models) => {

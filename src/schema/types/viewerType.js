@@ -4,7 +4,6 @@ import {
 } from 'graphql';
 
 // TEMP FIX for DUBLICATE COLUMN ISUE
-
 const _ = require('lodash');
 
 import presentationType from '../types/presentationType';
