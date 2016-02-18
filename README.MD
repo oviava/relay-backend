@@ -5,6 +5,7 @@ Huge thanks to Mick Hansen (@mhansen).
 
 Built using `sequelize, graphql-sequelize`
 
+Extract db script from `sqldb/graphql.zip`, import into your sql server.
 
 Edit `src/models/index.js` to match your db config
 
