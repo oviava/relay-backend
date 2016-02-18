@@ -4,6 +4,7 @@ import {
   GraphQLInt,
   GraphQLString,
   GraphQLList,
+  GraphQLID,
 } from 'graphql';
 
 import { resolver } from 'graphql-sequelize';
@@ -30,7 +31,7 @@ const query = new GraphQLObjectType({
       args: {
         id: {
           description: 'id of speaker',
-          type: new GraphQLNonNull(GraphQLInt),
+          type: new GraphQLNonNull(GraphQLID),
         },
       },
       resolve: resolver(Speaker),
@@ -52,7 +53,7 @@ const query = new GraphQLObjectType({
       args: {
         id: {
           description: 'id of presentation',
-          type: new GraphQLNonNull(GraphQLInt),
+          type: new GraphQLNonNull(GraphQLID),
         },
       },
       resolve: resolver(Presentation),
@@ -74,7 +75,7 @@ const query = new GraphQLObjectType({
       args: {
         id: {
           description: 'id of room',
-          type: new GraphQLNonNull(GraphQLInt),
+          type: new GraphQLNonNull(GraphQLID),
         },
       },
       resolve: resolver(Room),
@@ -96,7 +97,7 @@ const query = new GraphQLObjectType({
       args: {
         id: {
           description: 'id of schedule',
-          type: new GraphQLNonNull(GraphQLInt),
+          type: new GraphQLNonNull(GraphQLID),
         },
       },
       resolve: resolver(Schedule),
