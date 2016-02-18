@@ -7,6 +7,10 @@ import {
   GraphQLID,
 } from 'graphql';
 
+import {
+  fromGlobalId,
+} from 'graphql-relay';
+
 import { resolver } from 'graphql-sequelize';
 import { Room, Schedule, Speaker, Presentation, nodeTypeMapper, nodeField } from '../../models';
 
@@ -34,7 +38,19 @@ const query = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLID),
         },
       },
-      resolve: resolver(Speaker),
+      // by default resolver doesn't use globalId - small workaround
+      // courtesy of @mhansen
+      resolve: resolver(Speaker, {
+        before: (options, args, root) => {
+          options.where = options.where || {};
+          if (args.id) {
+            options.where.id = fromGlobalId(args.id).id;
+          } else {
+            throw new Error('Can only query a by id');
+          }
+          return options;
+        },
+      }),
     },
     speakers: {
       type: new GraphQLList(speakerType),
@@ -56,7 +72,17 @@ const query = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLID),
         },
       },
-      resolve: resolver(Presentation),
+      resolve: resolver(Presentation, {
+        before: (options, args, root) => {
+          options.where = options.where || {};
+          if (args.id) {
+            options.where.id = fromGlobalId(args.id).id;
+          } else {
+            throw new Error('Can only query a by id');
+          }
+          return options;
+        },
+      }),
     },
     presentations: {
       type: new GraphQLList(presentationType),
@@ -78,7 +104,17 @@ const query = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLID),
         },
       },
-      resolve: resolver(Room),
+      resolve: resolver(Room, {
+        before: (options, args, root) => {
+          options.where = options.where || {};
+          if (args.id) {
+            options.where.id = fromGlobalId(args.id).id;
+          } else {
+            throw new Error('Can only query a by id');
+          }
+          return options;
+        },
+      }),
     },
     rooms: {
       type: new GraphQLList(roomType),
@@ -97,7 +133,17 @@ const query = new GraphQLObjectType({
       args: {
         id: {
           description: 'id of schedule',
-          type: new GraphQLNonNull(GraphQLID),
+          type: new GraphQLNonNull(GraphQLID, {
+            before: (options, args, root) => {
+              options.where = options.where || {};
+              if (args.id) {
+                options.where.id = fromGlobalId(args.id).id;
+              } else {
+                throw new Error('Can only query a by id');
+              }
+              return options;
+            },
+          }),
         },
       },
       resolve: resolver(Schedule),
