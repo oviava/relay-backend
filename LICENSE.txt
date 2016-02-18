@@ -1,0 +1,3 @@
+MIT license for everything but the database and contents of database.
+
+Database: You may use the database and it's contents but cannot redistribute.
