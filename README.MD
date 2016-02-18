@@ -16,3 +16,5 @@ Run with `node index.js`
 Browse to `http://localhost:3001/graphql` for gui interface.
 
 p.s. requires node v5
+
+Frontend availalbe here: https://github.com/oviava/react-relay-play
